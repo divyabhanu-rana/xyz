@@ -1,0 +1,35 @@
+# Node modules (frontend)
+frontend/node_modules/
+
+# Python virtual environments (backend)
+backend/venv/
+
+# Python environment variables
+backend/.env
+
+# Python cache
+backend/__pycache__/
+**/__pycache__/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+
+# Build and dist artifacts (Python)
+dist/
+build/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor directories and files
+.vscode/
+.idea/
+*.swp
+
+# Frontend build output
+frontend/dist/
+frontend/.vite/

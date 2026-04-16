@@ -1,0 +1,475 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap');
+
+/* ── Design tokens ──────────────────────────────────────────────────────────── */
+:root {
+  --bg-page:          #f5f3ef;
+  --bg-card:          #ffffff;
+  --bg-field:         #f9fafc;
+  --hero-start:       #1a2744;
+  --hero-end:         #253561;
+  --topbar-bg:        #1a2744;
+  --text-primary:     #1a2744;
+  --text-secondary:   #5a6480;
+  --text-label:       #8892aa;
+  --border:           #e2e6f0;
+  --shadow:           rgba(26, 39, 68, 0.10);
+  --divider:          #eef0f6;
+  --accent:           #3a5bd9;
+  --accent-bg:        #eef1fd;
+  --marks-bg:         #f0f3fe;
+  --type-hover:       #f0f3fe;
+  --btn-bg:           #1a2744;
+  --btn-hover:        #253a6e;
+  --progress-track:   #e2e6f0;
+  --progress-start:   #3a5bd9;
+  --progress-end:     #6c8af5;
+  --entertain-bg:     rgba(220, 240, 255, 0.5);
+  --entertain-color:  #1a6080;
+}
+
+[data-theme="dark"] {
+  --bg-page:          #0f1524;
+  --bg-card:          #1a2035;
+  --bg-field:         #222b44;
+  --hero-start:       #0a0f1e;
+  --hero-end:         #111827;
+  --topbar-bg:        #0a0f1e;
+  --text-primary:     #e8ecf5;
+  --text-secondary:   #8892aa;
+  --text-label:       #5a6480;
+  --border:           #2a3555;
+  --shadow:           rgba(0, 0, 0, 0.35);
+  --divider:          #1e2a45;
+  --accent:           #6c8af5;
+  --accent-bg:        #1a2550;
+  --marks-bg:         #1a2550;
+  --type-hover:       #1e2a50;
+  --btn-bg:           #3a5bd9;
+  --btn-hover:        #4a6ae8;
+  --progress-track:   #2a3555;
+  --progress-start:   #6c8af5;
+  --progress-end:     #a0b4ff;
+  --entertain-bg:     rgba(40, 60, 90, 0.4);
+  --entertain-color:  #4ccfff;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.25s, color 0.25s;
+}
+
+/* ── App root ────────────────────────────────────────────────────────────────── */
+.app-root {
+  min-height: 100vh;
+  background: var(--bg-page);
+  transition: background 0.25s;
+  padding-bottom: 3rem;
+}
+
+/* ── Topbar ─────────────────────────────────────────────────────────────────── */
+.topbar {
+  background: var(--topbar-bg);
+  height: 52px;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.25s;
+}
+.topbar-logo {
+  font-family: 'DM Serif Display', serif;
+  color: #fff;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+}
+.topbar-logo span { color: #f5a623; }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.topbar-sub {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.theme-toggle-btn:hover { background: rgba(255, 255, 255, 0.18); }
+
+/* ── Hero ───────────────────────────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--hero-start) 0%, var(--hero-end) 100%);
+  padding: 2.5rem 1.5rem 3.25rem;
+  text-align: center;
+  color: #fff;
+  transition: background 0.25s;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 27px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.hero p {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Card wrapper ───────────────────────────────────────────────────────────── */
+.card-pull {
+  max-width: 660px;
+  margin: -1.5rem auto 0;
+  padding: 0 1.25rem;
+}
+.main-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  box-shadow: 0 4px 28px var(--shadow);
+  padding: 1.75rem;
+  transition: background 0.25s, box-shadow 0.25s;
+}
+
+/* ── Section label ──────────────────────────────────────────────────────────── */
+.section-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin-bottom: 10px;
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 1.25rem 0;
+}
+
+/* ── Field grid ─────────────────────────────────────────────────────────────── */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.field-full { grid-column: 1 / -1; }
+
+.field > label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ── All inputs & selects (including those inside child components) ────────── */
+.main-card input[type="text"],
+.main-card input[type="number"],
+.main-card select,
+.field input,
+.field select {
+  height: 40px;
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  background: var(--bg-field);
+  outline: none;
+  transition: border-color 0.18s, background 0.25s, color 0.25s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.main-card select,
+.field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238892aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-color: var(--bg-field);
+  padding-right: 32px;
+  cursor: pointer;
+}
+.main-card input:focus,
+.main-card select:focus,
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent);
+  background: var(--bg-card);
+}
+
+/* ── Material type tiles ────────────────────────────────────────────────────── */
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 1.1rem;
+}
+.type-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 8px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-field);
+  cursor: pointer;
+  transition: border-color 0.16s, background 0.16s;
+  text-align: center;
+  user-select: none;
+}
+.type-btn:hover  { border-color: var(--accent); background: var(--type-hover); }
+.type-btn.active { border-color: var(--accent); background: var(--accent-bg); }
+
+.type-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.type-name {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+.type-btn.active .type-name { color: var(--accent); }
+
+/* ── Difficulty pills ───────────────────────────────────────────────────────── */
+.difficulty-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 1.1rem;
+}
+.diff-btn {
+  padding: 9px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-secondary);
+  background: var(--bg-field);
+  user-select: none;
+}
+.diff-btn:hover { border-color: #aab4d0; }
+
+/* Light mode active states */
+.diff-btn.easy.active   { background: #e9faf1; border-color: #27ae60; color: #1c7a43; }
+.diff-btn.medium.active { background: #fff8e7; border-color: #f5a623; color: #a06c08; }
+.diff-btn.hard.active   { background: #feeeee; border-color: #e05252; color: #b33030; }
+
+/* Dark mode active states */
+[data-theme="dark"] .diff-btn.easy.active   { background: #0e2e1a; border-color: #27ae60; color: #4cd98a; }
+[data-theme="dark"] .diff-btn.medium.active { background: #2c1f05; border-color: #f5a623; color: #f5c06a; }
+[data-theme="dark"] .diff-btn.hard.active   { background: #2d0f0f; border-color: #e05252; color: #f07070; }
+
+/* ── Marks slider ───────────────────────────────────────────────────────────── */
+.marks-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.marks-row > label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.marks-slider { flex: 1; }
+.marks-slider input[type="range"] {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.marks-value {
+  min-width: 42px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--marks-bg);
+  border-radius: 8px;
+  padding: 4px 8px;
+  transition: background 0.25s;
+}
+
+/* ── Generate button ────────────────────────────────────────────────────────── */
+.gen-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.18s, transform 0.1s, opacity 0.2s;
+}
+.gen-btn:hover:not(:disabled) { background: var(--btn-hover); }
+.gen-btn:active:not(:disabled) { transform: scale(0.99); }
+.gen-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.star { color: #f5a623; }
+
+/* ── Spinner ────────────────────────────────────────────────────────────────── */
+.generate-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Progress area ──────────────────────────────────────────────────────────── */
+.progress-area { margin-top: 1.4rem; }
+
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: var(--progress-track);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.55rem;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--progress-start), var(--progress-end));
+  border-radius: 6px;
+}
+.progress-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.progress-pct { color: #f5a623; font-weight: 600; }
+
+.entertainment-text {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--entertain-color);
+  text-align: center;
+  background: var(--entertain-bg);
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+  animation: fadeUp 0.6s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Output card ────────────────────────────────────────────────────────────── */
+.output-area { margin-top: 1.4rem; }
+
+.output-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  box-shadow: 0 4px 28px var(--shadow);
+  padding: 1.6rem 1.75rem;
+  transition: background 0.25s;
+}
+.output-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--divider);
+}
+.output-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--text-primary);
+}
+
+/* ── Download buttons ───────────────────────────────────────────────────────── */
+.download-btns-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+}
+.download-btn {
+  background: var(--bg-field);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+.download-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .field-row    { grid-template-columns: 1fr; }
+  .type-grid    { grid-template-columns: repeat(3, 1fr); }
+  .hero h1      { font-size: 22px; }
+  .main-card    { padding: 1.25rem; }
+  .topbar-sub   { display: none; }
+  .download-btns-row { justify-content: center; }
+}
